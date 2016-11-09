@@ -3,15 +3,17 @@
 //  Pokemon
 //
 //  Created by Khalid Mohamed on 10/31/16.
-//  Copyright © 2016 Khalid Mohamed. All rights reserved.
+//  Copyright © 2016 Khalid Mohamed. All rights reserved.r
 //
-
+//
 import UIKit
 
 class Pokemon {
     var imageURL :String!
     var title :String!
     var userId :Int!
+    var longitude: Double!
+    var latitude: Double!
 }
 
 private let reuseIdentifier = "Cell"
@@ -36,20 +38,16 @@ class PokemonCollectionViewController: UICollectionViewController {
             pokemon.title = item["name"] as! String
             pokemon.imageURL = item["imageURL"] as! String
             self.pokemon.append(pokemon)
-            }
             
            self.collectionView?.reloadData()
             
+
+            }
         }.resume()
+            
+        }
     
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-    //    self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-  
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,12 +75,9 @@ class PokemonCollectionViewController: UICollectionViewController {
         let imageData = try! Data(contentsOf: URL(string: pokemon.imageURL)!)
         cell.imageView?.image = UIImage(data :imageData)
         
-    
-        
-        
+
         return cell
     }
-
     // MARK: UICollectionViewDelegate
 
     /*
